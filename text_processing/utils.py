@@ -24,7 +24,7 @@ def date2daterange(year):
 		return "1902-1906"
 	elif year >= 1907 and year <= 1910:
 		return "1907-1910"
-	elif year >= 1911 and year < 1914:
+	elif year >= 1911 and year <= 1914:
 		return "1911-1914"
 	elif year >= 1915 and year <= 1918:
 		return "1915-1918"
@@ -47,3 +47,7 @@ def reshape(dict2d):
 	"""
 	return [dict(dict2d[d], **{u"_id":d}) for d in dict2d]
 	
+class fakedict(object):
+	"""Behave like `defaultdict(lambda:1.0)` without wasting memory to save item"""
+	def __getitem__(self, key):
+		return 1.0
